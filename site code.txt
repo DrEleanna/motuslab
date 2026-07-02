@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motuslab | Exercise Physiology & Performance</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #1d1d1d;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 2rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-bottom: 1px solid #e5e5e5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0D7E8F;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .language-toggle {
+      display: flex;
+      gap: 0;
+      background: #0D7E8F;
+      padding: 0.35rem;
+      border-radius: 6px;
+      border: 2px solid #0D7E8F;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: #000;
+      cursor: pointer;
+      padding: 0.4rem 1rem;
+      transition: all 0.2s;
+      font-weight: 700;
+      font-size: 12px;
+      border-radius: 4px;
+    }
+
+    .lang-btn.active {
+      background: #fff;
+      color: #000;
+      border: none;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #000;
+    }
+
+    nav {
+      display: flex;
+      gap: 2.5rem;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #666;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #0D7E8F;
+    }
+
+    .hero {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 44px;
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #000;
+    }
+
+    .hero-text .tagline {
+      font-size: 16px;
+      color: #0D7E8F;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .hero-text .subtitle {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .hero-visual {
+      background: linear-gradient(135deg, #0D7E8F 0%, #17A2B8 100%);
+      border-radius: 12px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    section h2 {
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+      color: #000;
+    }
+
+    .credential-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .credential-card {
+      background: #f0f8f9;
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid #c8dfe5;
+      transition: all 0.3s;
+    }
+
+    .credential-card:hover {
+      border-color: #0D7E8F;
+      box-shadow: 0 4px 12px rgba(13, 126, 143, 0.1);
+    }
+
+    .credential-card .icon {
+      font-size: 32px;
+      color: #0D7E8F;
+      margin-bottom: 1rem;
+    }
+
+    .credential-card h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0D7E8F;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .credential-card p {
+      font-size: 15px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .role-card {
+      background: #fff;
+      border: 1.5px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .role-card:hover {
+      border-color: #0D7E8F;
+      box-shadow: 0 8px 20px rgba(13, 126, 143, 0.12);
+    }
+
+    .role-card .icon {
+      font-size: 28px;
+      color: #0D7E8F;
+      margin-bottom: 1rem;
+    }
+
+    .role-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 0.5rem;
+    }
+
+    .role-card .meta {
+      font-size: 12px;
+      color: #0D7E8F;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .role-card p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .accent-section {
+      background: linear-gradient(135deg, #0D7E8F 0%, #17A2B8 100%);
+      color: #fff;
+      margin: 0 2rem;
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .accent-section h3 {
+      font-size: 26px;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .accent-section p {
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 0.85rem 2.5rem;
+      background: #fff;
+      color: #0D7E8F;
+      text-decoration: none;
+      font-size: 15px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      border: none;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .highlight-box {
+      background: #f0f8f9;
+      border-left: 4px solid #0D7E8F;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 6px;
+    }
+
+    .highlight-box p {
+      font-size: 15px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    footer {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      text-align: center;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      color: #0D7E8F;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .contact-links a:hover {
+      color: #05525c;
+    }
+
+    .footer-note {
+      font-size: 13px;
+      color: #888;
+      margin-top: 1rem;
+    }
+
+    .footer-branding {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0D7E8F;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .header-left {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 1rem;
+        font-size: 12px;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero-text h1 {
+        font-size: 32px;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+      }
+
+      .accent-section {
+        margin: 0 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="#" class="logo">Motuslab</a>
+      <div class="language-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="el">ΕΛ</button>
+      </div>
+    </div>
+    <nav>
+      <a href="#about" data-text="nav-about">About</a>
+      <a href="#background" data-text="nav-background">Background</a>
+      <a href="#research" data-text="nav-research">Research</a>
+      <a href="#training" data-text="nav-training">Training</a>
+      <a href="#contact" data-text="nav-contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-text">
+      <div class="tagline" data-text="hero-tagline">Exercise Physiology & Sport Science</div>
+      <h1>Eleanna Chalari</h1>
+      <p class="subtitle" data-text="hero-subtitle">Exercise Physiologist & Sport Scientist. PhD in Exercise Physiology & Biochemistry. Academic Director, BSc Sport Science with Physical Education. Specializing in training adaptation, athletic performance optimization, and evidence-based fitness protocols. Personal training and consulting services available to athletes, fitness professionals, and individuals of all levels.</p>
+    </div>
+    <div class="hero-visual">
+      <i class="fas fa-dumbbell" style="font-size: 80px; opacity: 0.3;"></i>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2 data-text="about-title">About</h2>
+    <div class="highlight-box">
+      <p data-text="about-text">I'm an exercise physiologist and sport scientist with a PhD in Exercise Physiology and Biochemistry. My research and professional practice focus on understanding the mechanisms of how the human body responds and adapts to training, as well as optimizing athletic performance through evidence-based fitness protocols.
+
+I hold the position of Academic Director for the BSc Sport Science with Physical Education programme, with the goal of educating and scientifically training the next generation of professionals in the field. Alongside my academic work, I provide personal training and consulting services to anyone wanting to exercise, athletes, fitness professionals, and individuals seeking to maximize their performance or improve their health through scientific, personalized approaches.</p>
+    </div>
+  </section>
+
+  <section id="background">
+    <h2 data-text="cred-title">Credentials & Expertise</h2>
+    <div class="credential-grid">
+      <div class="credential-card">
+        <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3 data-text="cred-edu-title">Education</h3>
+        <p data-text="cred-edu">PhD Exercise Physiology & Biochemistry • MSc Sports Biomechanics • BSc Astronomy • MBA (Finance pathway)</p>
+      </div>
+      <div class="credential-card">
+        <div class="icon"><i class="fas fa-briefcase"></i></div>
+        <h3 data-text="cred-role-title">Current Role</h3>
+        <p data-text="cred-role">Academic Director & Programme Leader, BSc Sport Science with Physical Education</p>
+      </div>
+      <div class="credential-card">
+        <div class="icon"><i class="fas fa-microscope"></i></div>
+        <h3 data-text="cred-focus-title">Research Focus</h3>
+        <p data-text="cred-focus">Exercise physiology, metabolic adaptation, training response, athletic performance</p>
+      </div>
+      <div class="credential-card">
+        <div class="icon"><i class="fas fa-chart-line"></i></div>
+        <h3 data-text="cred-emerging-title">Emerging Expertise</h3>
+        <p data-text="cred-emerging">Business analytics, financial modeling, systems thinking, organizational strategy</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <h2 data-text="research-title">Research & Practice Areas</h2>
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="icon"><i class="fas fa-heartbeat"></i></div>
+        <h3 data-text="research-1-title">Exercise Physiology</h3>
+        <p class="meta" data-text="research-1-meta">Specialization</p>
+        <p data-text="research-1-text">Investigating metabolic adaptation, biochemical responses to training stress, and physiological mechanisms of athletic performance. Translating research into practical coaching frameworks and evidence-based conditioning protocols.</p>
+      </div>
+
+      <div class="role-card">
+        <div class="icon"><i class="fas fa-walking"></i></div>
+        <h3 data-text="research-2-title">Biomechanics & Movement</h3>
+        <p class="meta" data-text="research-2-meta">Application</p>
+        <p data-text="research-2-text">Analysis of human movement patterns, injury prevention strategies, and technique optimization. Integrating motion capture, force analysis, and computational modeling to enhance athletic performance.</p>
+      </div>
+
+      <div class="role-card">
+        <div class="icon"><i class="fas fa-chalkboard-user"></i></div>
+        <h3 data-text="research-3-title">Teaching & Curriculum</h3>
+        <p class="meta" data-text="research-3-meta">Leadership</p>
+        <p data-text="research-3-text">Designing and delivering evidence-based curriculum for sport science students. Mentoring emerging professionals through complex physiological concepts and facilitating applied learning experiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="training">
+    <div class="accent-section">
+      <i class="fas fa-star" style="font-size: 40px; margin-bottom: 1rem;"></i>
+      <h3 data-text="training-title">Personal Training & Consulting</h3>
+      <p data-text="training-text">Evidence-based coaching for athletes, fitness professionals, and individuals seeking to optimize performance. Combining exercise physiology, biomechanics assessment, and personalized programming grounded in scientific practice.</p>
+      <a href="mailto:eleannac@proton.me?subject=Personal%20Training%20Inquiry" class="cta-button" data-text="training-cta">Get in Touch</a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-branding">Motuslab</div>
+    <h2 data-text="contact-title">Let's Connect</h2>
+    <div class="contact-links">
+      <a href="mailto:eleannac@proton.me"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i><span data-text="contact-email">Email</span></a>
+      <a href="https://https://www.linkedin.com/in/eleannac/" target="_blank"><i class="fas fa-linkedin" style="margin-right: 0.5rem;"></i><span data-text="contact-linkedin">LinkedIn</span></a>
+    </div>
+    <p class="footer-note" data-text="footer-copy">© 2025 Motuslab. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        "nav-about": "About",
+        "nav-background": "Background",
+        "nav-research": "Research",
+        "nav-training": "Training",
+        "nav-contact": "Contact",
+        "hero-tagline": "Exercise Physiology & Sport Science",
+        "hero-subtitle": "Exercise Physiologist & Sport Scientist. PhD in Exercise Physiology & Biochemistry. Academic Director, BSc Sport Science with Physical Education. Specializing in training adaptation, athletic performance optimization, and evidence-based fitness protocols. Personal training and consulting services available to athletes, fitness professionals, and individuals of all levels.",
+        "about-title": "About",
+        "about-text": "I'm an exercise physiologist and sport scientist with a PhD in Exercise Physiology and Biochemistry. My research and professional practice focus on understanding the mechanisms of how the human body responds and adapts to training, as well as optimizing athletic performance through evidence-based fitness protocols.\n\nI hold the position of Academic Director for the BSc Sport Science with Physical Education programme, with the goal of educating and scientifically training the next generation of professionals in the field. Alongside my academic work, I provide personal training and consulting services to anyone wanting to exercise, athletes, fitness professionals, and individuals seeking to maximize their performance or improve their health through scientific, personalized approaches.",
+        "cred-title": "Credentials & Expertise",
+        "cred-edu-title": "Education",
+        "cred-edu": "PhD Exercise Physiology & Biochemistry • MSc Sports Biomechanics • BSc Astronomy • MBA (Finance pathway)",
+        "cred-role-title": "Current Role",
+        "cred-role": "Academic Director & Programme Leader, BSc Sport Science with Physical Education",
+        "cred-focus-title": "Research Focus",
+        "cred-focus": "Exercise physiology, metabolic adaptation, training response, athletic performance",
+        "cred-emerging-title": "Emerging Expertise",
+        "cred-emerging": "Business analytics, financial modeling, systems thinking, organizational strategy",
+        "research-title": "Research & Practice Areas",
+        "research-1-title": "Exercise Physiology",
+        "research-1-meta": "Specialization",
+        "research-1-text": "Investigating metabolic adaptation, biochemical responses to training stress, and physiological mechanisms of athletic performance. Translating research into practical coaching frameworks and evidence-based conditioning protocols.",
+        "research-2-title": "Biomechanics & Movement",
+        "research-2-meta": "Application",
+        "research-2-text": "Analysis of human movement patterns, injury prevention strategies, and technique optimization. Integrating motion capture, force analysis, and computational modeling to enhance athletic performance.",
+        "research-3-title": "Teaching & Curriculum",
+        "research-3-meta": "Leadership",
+        "research-3-text": "Designing and delivering evidence-based curriculum for sport science students. Mentoring emerging professionals through complex physiological concepts and facilitating applied learning experiences.",
+        "training-title": "Personal Training & Consulting",
+        "training-text": "Evidence-based coaching for athletes, fitness professionals, and individuals seeking to optimize performance. Combining exercise physiology, biomechanics assessment, and personalized programming grounded in scientific practice.",
+        "training-cta": "Get in Touch",
+        "contact-title": "Let's Connect",
+        "contact-email": "Email",
+        "contact-linkedin": "LinkedIn",
+        "footer-copy": "© 2025 Motuslab. All rights reserved."
+      },
+      el: {
+        "nav-about": "Σχετικά",
+        "nav-background": "Υπόβαθρο",
+        "nav-research": "Έρευνα",
+        "nav-training": "Εκπαίδευση",
+        "nav-contact": "Επικοινωνία",
+        "hero-tagline": "Φυσιολογία Άσκησης & Αθλητική Επιστήμη",
+        "hero-subtitle": "Εργοφυσιολόγος και επιστήμονας φυσικής αγωγής και αθλητισμού, κάτοχος διδακτορικού στη Φυσιολογία της Άσκησης και τη Βιοχημεία. Ακαδημαϊκή Διευθύντρια του προγράμματος BSc Αθλητική Επιστήμη με Φυσική Αγωγή. Ειδίκευση στη προσαρμογή στην προπόνηση, βελτιστοποίηση της αθλητικής απόδοσης και τεκμηριωμένα πρωτόκολλα φυσικής κατάστασης. Διαθέσιμη για υπηρεσίες personal training και συμβουλευτικής για αθλητές, επαγγελματίες fitness και άτομα όλων των επιπέδων.",
+        "about-title": "Σχετικά",
+        "about-text": "Είμαι εργοφυσιολόγος και επιστήμονας φυσικής αγωγής και αθλητισμού, κάτοχος διδακτορικού στη Φυσιολογία της Άσκησης και τη Βιοχημεία. Η έρευνα και η πρακτική μου εφαρμογή επικεντρώνονται στην κατανόηση των μηχανισμών απόκρισης και προσαρμογής του ανθρώπινου σώματος στην προπόνηση, καθώς και στη βελτιστοποίηση της αθλητικής απόδοσης μέσω τεκμηριωμένων πρωτοκόλλων φυσικής κατάστασης.\n\nΚατέχω θέση Ακαδημαϊκής Διευθύντριας του προγράμματος BSc \"Αθλητική Επιστήμη με Φυσική Αγωγή\" με στόχο την εκπαίδευση και την επιστημονική κατάρτιση της επόμενης γενιάς επαγγελματιών του κλάδου. Παράλληλα με το ακαδημαϊκό μου έργο, παρέχω υπηρεσίες personal training και συμβουλευτικής σε οποιονδήποτε επιθυμεί να γυμναστεί, σε αθλητές, επαγγελματίες του fitness και άτομα που επιθυμούν να μεγιστοποιήσουν την απόδοσή τους ή να βελτιώσουν την υγεία τους μέσα από επιστημονικές και εξατομικευμένες προσεγγίσεις.",
+        "cred-title": "Διαπιστευτήρια & Ειδίκευση",
+        "cred-edu-title": "Εκπαίδευση",
+        "cred-edu": "PhD Φυσιολογία Άσκησης & Βιοχημεία • MSc Αθλητική Βιομηχανική • BSc Αστρονομία • MBA (χρηματοδοτική κατεύθυνση)",
+        "cred-role-title": "Τρέχουσα Θέση",
+        "cred-role": "Ακαδημαϊκή Διευθύντρια & Ηγέτιδα Προγράμματος, BSc Αθλητική Επιστήμη με Φυσική Αγωγή",
+        "cred-focus-title": "Εστίαση Έρευνας",
+        "cred-focus": "Φυσιολογία άσκησης, μεταβολική προσαρμογή, απόκριση στην προπόνηση, αθλητική απόδοση",
+        "cred-emerging-title": "Αναδυόμενη Ειδίκευση",
+        "cred-emerging": "Ανάλυση επιχειρήσεων, χρηματοοικονομική μοντελοποίηση, σκέψη συστημάτων, οργανωσιακή στρατηγική",
+        "research-title": "Έρευνα & Τομείς Εφαρμογής",
+        "research-1-title": "Φυσιολογία Άσκησης",
+        "research-1-meta": "Ειδίκευση",
+        "research-1-text": "Διερεύνηση της μεταβολικής προσαρμογής, των βιοχημικών αποκρίσεων στο άγχος προπόνησης και των φυσιολογικών μηχανισμών της αθλητικής απόδοσης. Μετάφραση της έρευνας σε πρακτικά πλαίσια coaching και τεκμηριωμένα πρωτόκολλα φυσικής κατάστασης.",
+        "research-2-title": "Βιομηχανική & Κίνηση",
+        "research-2-meta": "Εφαρμογή",
+        "research-2-text": "Ανάλυση των μοτίβων ανθρώπινης κίνησης, στρατηγικές πρόληψης τραυματισμών και βελτιστοποίηση τεχνικής. Ενσωμάτωση της σύλληψης κίνησης, ανάλυσης δύναμης και υπολογιστικής μοντελοποίησης για βελτίωση της αθλητικής απόδοσης.",
+        "research-3-title": "Διδασκαλία & Αναλυτικό Πρόγραμμα",
+        "research-3-meta": "Ηγεσία",
+        "research-3-text": "Σχεδίαση και παράδοση τεκμηριωμένου αναλυτικού προγράμματος για φοιτητές αθλητικής επιστήμης. Mentoring αναδυόμενων επαγγελματιών μέσα από περίπλοκες φυσιολογικές έννοιες και διευκόλυνση εφαρμοσμένων εμπειριών μάθησης.",
+        "training-title": "Προσωπική Εκπαίδευση & Συμβουλευτική",
+        "training-text": "Εκπαίδευση βασισμένη σε στοιχεία για αθλητές, επαγγελματίες fitness και άτομα που επιδιώκουν βελτιστοποίηση της απόδοσης. Συνδυασμός φυσιολογίας άσκησης, αξιολόγησης βιομηχανικής και προσωπικοποιημένου προγραμματισμού με βάση την επιστημονική πρακτική.",
+        "training-cta": "Επικοινωνήστε Μαζί Μας",
+        "contact-title": "Ας Συνδεθούμε",
+        "contact-email": "Email",
+        "contact-linkedin": "LinkedIn",
+        "footer-copy": "© 2025 Motuslab. Όλα τα δικαιώματα διατηρούνται."
+      }
+    };
+
+    let currentLang = localStorage.getItem('motuslab-lang') || 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('motuslab-lang', lang);
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+      
+      document.querySelectorAll('[data-text]').forEach(el => {
+        const key = el.getAttribute('data-text');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+
+    setLanguage(currentLang);
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
